@@ -23,13 +23,16 @@ header {
 	height: 50%;
 	position: relative;
 }
-header .secure-password-button {
-	font-family: "Roboto Mono", sans-serif;
-	font-size: 14px;
+header .secure-password {
 	position: absolute;
 	top: 25px;
 	right: 25px;
+}
+header .secure-password-button {
+	font-family: "Roboto Mono", sans-serif;
+	font-size: 14px;
 	white-space: nowrap;
+	float: right;
 	color: rgba(255,255,255,0.4);
 	border: 0.15em solid rgba(255, 255, 255, 0.27);
 	padding: 0.6em 0.8em;
@@ -43,25 +46,57 @@ header .secure-password-button .fa-asterisk {
 	margin-right: -0.1em;
 	font-size: 85%;
 }
+header .secure-password-options {
+	float: right;
+	white-space: nowrap;
+	font-size: 0;
+	margin-right: 10px;
+	margin-top: 9px;
+	color: rgba(255,255,255,.7);
+	transition: 0.2s ease all;
+	opacity: 0;
+	visibility: hidden;
+}
+header .secure-password-options.visible {
+	opacity: 1;
+	visibility: visible;
+}
+header .secure-password-options .option {
+	display: inline-block;
+	vertical-align: middle;
+	font-family: "Roboto Mono", monospace;
+	font-size: 9px;
+	padding: 4px 6px;
+	cursor: pointer;
+}
+header .secure-password-options .option.selected {
+	outline: 1px solid #ff9a56;
+	color: white;
+}
 header .secure-password-output {
-	display: none;
 	user-select: text;
 	-webkit-user-select: text;
 	cursor: text;
 	font-family: "Roboto Mono", monospace;
-	position: absolute;
-	top: 72px;
-	right: 26px;
 	background: #394348;
 	padding: 15px 20px;
 	white-space: nowrap;
+	clear: both;
+	margin-top: 20px;
+	position: absolute;
+	top: 36px;
+	right: 1px;
+	transition: 0.2s ease all;
+	opacity: 0;
+	visibility: hidden;
 }
 header .secure-password-output::selection {
 	background: rgba(255, 154, 86, 0.99);
 	color: white;
 }
 header .secure-password-output.visible {
-	display: block;
+	opacity: 1;
+	visibility: visible;
 }
 header .name {
 	font-weight: 300;
