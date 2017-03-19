@@ -16,9 +16,13 @@
 	var initial = true;
 	
 	if(crypto) {
+		var selectedOption = getCookie();
+		if(Object.keys(alphabets).indexOf(selectedOption) === -1) {
+			selectedOption = 'alphabet-complete';
+		}
 		for(var i = 0; i < options.children.length; i++) {
 			var child = options.children[i];
-			if(child.className.indexOf('uppercase') !== -1) {
+			if(child.className.indexOf(selectedOption) !== -1) {
 				addClass(child, 'selected');
 			}
 			(function(child) {
@@ -30,6 +34,7 @@
 						}
 					}
 					addClass(child, 'selected');
+					setCookie(child.className.match(/alphabet-[^\s]+/)[0]);
 					displayPassword(false);
 				});
 			})(child);
@@ -82,6 +87,28 @@
 	function addClass(element, className) {
 		if(element.className.indexOf(className) === -1) {
 			element.className += " " + className;
+		}
+	}
+	
+	// cookie functions: https://www.w3schools.com/js/js_cookies.asp
+	function setCookie(option) {
+		var d = new Date();
+		d.setTime(d.getTime() + (120*24*60*60*1000));
+		var expires = "expires="+ d.toUTCString();
+		document.cookie = 'schrepfer-io-password-option=' + option + ';' + expires + ";path=/";
+	}
+	function getCookie() {
+		var name = 'schrepfer-io-password-option=';
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) === ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) === 0) {
+				return c.substring(name.length, c.length);
+			}
 		}
 	}
 

@@ -36,7 +36,7 @@ header .secure-password-button {
 	color: rgba(255,255,255,0.4);
 	border: 0.15em solid rgba(255, 255, 255, 0.27);
 	padding: 0.6em 0.8em;
-	border-radius: 0.8em;
+	border-radius: 0.3em;
 }
 header .secure-password-button:focus {
 	background: rgba(255,255,255,0.1);
