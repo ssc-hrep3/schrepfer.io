@@ -1,6 +1,17 @@
-(function(crypto) {
+(function(crypto, emailAddress) {
 	'use strict';
 
+	(function clickListenerMailButton() {
+		document.querySelector('.button.mail').addEventListener('click', function(event) {
+			var element = this.parentNode.querySelector('.mail-address');
+			element.querySelector('.first').textContent = emailAddress.firstPart("dL2g8dg");
+			element.querySelector('.last').textContent = emailAddress.lastPart("DdJ0weUw0H-L");
+		
+			addClass(element, 'visible');
+			event.preventDefault();
+		});
+	})();
+	
 	var alphabets = {};
 	alphabets['alphabet-uppercase'] = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789',
 	alphabets['alphabet-complete'] = 'AaBbCcDdEeFfGgHhiJjKkLMmNnPpQqRrSsTtUuVvWwXxYyZz23456789';
@@ -69,7 +80,7 @@
 		if(initial) {
 			window.setTimeout(function() {
 				selectElement(output);
-			}, 300);
+			}, 400);
 		}
 		else {
 			selectElement(output);
@@ -86,7 +97,7 @@
 	
 	function addClass(element, className) {
 		if(element.className.indexOf(className) === -1) {
-			element.className += " " + className;
+			element.className += ' ' + className;
 		}
 	}
 	
@@ -94,8 +105,8 @@
 	function setCookie(option) {
 		var d = new Date();
 		d.setTime(d.getTime() + (120*24*60*60*1000));
-		var expires = "expires="+ d.toUTCString();
-		document.cookie = 'schrepfer-io-password-option=' + option + ';' + expires + ";path=/";
+		var expires = 'expires='+ d.toUTCString();
+		document.cookie = 'schrepfer-io-password-option=' + option + ';' + expires + ';path=/';
 	}
 	function getCookie() {
 		var name = 'schrepfer-io-password-option=';
@@ -112,4 +123,4 @@
 		}
 	}
 
-})(schrepfer.crypto);
+})(schrepfer.crypto, schrepfer.emailAddress);

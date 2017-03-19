@@ -74,8 +74,8 @@ header .secure-password-options .option.selected {
 	color: white;
 }
 header .secure-password-output {
-	user-select: text;
-	-webkit-user-select: text;
+	user-select: all;
+	-webkit-user-select: all;
 	cursor: text;
 	font-family: "Roboto Mono", monospace;
 	background: #394348;
@@ -118,7 +118,7 @@ main .title {
 	font-weight: 300;
 	white-space: nowrap;
 }
-main .button {
+main .button.linkedin {
 	display: inline-block;
 	font-size: 32px;
 	cursor: pointer;
@@ -127,8 +127,19 @@ main .button {
 	position: relative;
 	outline: none;
 }
-main .button + .button {
+main .button.mail {
+	display: inline-block;
+	font-size: 32px;
+	cursor: pointer;
+	position: relative;
+	outline: none;
+}
+main .mail-wrapper {
+	display: inline-block;
+	white-space: nowrap;
+	margin-top: 70px;
 	margin-left: 50px;
+	position: relative;
 }
 main .button:after {
 	content: "";
@@ -144,26 +155,57 @@ main .button:focus:after {
 	outline: 1px solid #ff9a56;
 	background-color: rgba(255, 154, 86, 0.14);
 }
+main .button.mail + .mail-address {
+	display: block;
+	width: auto;
+	position: absolute;
+	top: -57px;
+	left: 16px;
+	-webkit-user-select: all;
+	user-select: all;
+	cursor: text;
+	font-size: 16px;
+	padding: 0.5em 0.7em;
+	transform: translateX(-50%);
+	background: #48545a;
+	transition: 0.2s ease all;
+	opacity: 0;
+	visibility: hidden;
+}
+main .button.mail + .mail-address.visible {
+	opacity: 1;
+	visibility: visible;
+}
+main .button.mail + .mail-address:after {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border-left: 0.5em solid transparent;
+	border-right: 0.5em solid transparent;
+	border-top: 0.5em solid #48545a;
+	position: absolute;
+	bottom: -0.4em;
+	left: 50%;
+	transform: translateX(-50%);
+}
+main .button.mail + .mail-address>span::selection {
+	background: rgba(255, 154, 86, 0.99);
+	color: white;
+}
 
 @media only screen and (max-width: 975px) {
-	header .error {
-		font-size: 6vw;
-	}
 	header .name {
 		font-size: 8vw;
 	}
 	main .title {
 		font-size: 5vw;
 	}
-	main .linkedin {
+	main .button {
 		font-size: 3.2vw;
 	}
 }
 @media only screen and (max-height: 476px) {
-	header .error {
-		top: 5vh;
-		font-size: 12vh;
-	}
 	header .name {
 		font-size: 16vh;
 		bottom: 2vh;
@@ -172,8 +214,7 @@ main .button:focus:after {
 		top: 2vh;
 		font-size: 10vh;
 	}
-	main .linkedin {
+	main .button {
 		font-size: 6.4vh;
-		top: 26vh;
 	}
 }
