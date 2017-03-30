@@ -24,7 +24,6 @@
 	var button = document.querySelector('.secure-password-button');
 	var output = document.querySelector('.secure-password-output');
 	var options = document.querySelector('.secure-password-options');
-	var initial = true;
 	
 	if(crypto) {
 		var selectedOption = getCookie();
@@ -50,19 +49,15 @@
 				});
 			})(child);
 		}
-		var initial = true;
 		
-		button.addEventListener('click', function() {
-			displayPassword(initial);
-			initial = false;
-		});
+		button.addEventListener('click', displayPassword);
 	}
 	else {
 		button.parentNode.removeChild(button);
 		output.parentNode.removeChild(output);
 	}
 	
-	function displayPassword(initial) {
+	function displayPassword() {
 		var selectedAlphabet = 'alphabet-uppercase';
 		for(var k = 0; k < options.children.length; k++) {
 			var child = options.children[k];
@@ -77,16 +72,9 @@
 		addClass(options, 'visible');
 		output.textContent = crypto.secure(alphabets[selectedAlphabet], 25, 5);
 		addClass(output, 'visible');
-		if(initial) {
-			window.setTimeout(function() {
-				selectElement(output);
-			}, 400);
-		}
-		else {
-			selectElement(output);
-		}
 	}
 	
+	// can be removed, but is still here because it may still be needed
 	function selectElement(element) {
 		var range = document.createRange();
 		range.selectNodeContents(element);
