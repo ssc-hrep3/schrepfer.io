@@ -10,9 +10,6 @@ html {
 	height: 100%;
 	width: 100%;
 	font-family: "Roboto", sans-serif;
-	user-select: none;
-	-webkit-user-select: none;
-	cursor: default;
 }
 a, a:link, a:visited, a:hover, a:active, a:focus {
 	color: #ffffff;
@@ -68,6 +65,8 @@ header .secure-password-options .option {
 	font-size: 9px;
 	padding: 4px 6px;
 	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
 }
 header .secure-password-options .option.selected {
 	outline: 1px solid #ff9a56;
@@ -90,7 +89,17 @@ header .secure-password-output {
 	opacity: 0;
 	visibility: hidden;
 }
-header .secure-password-output::selection {
+header .secure-password-button::selection,
+header .secure-password-button span::selection {
+	cursor: default;
+	user-select: none;
+	-webkit-user-select: none;
+}
+header .secure-password-output::selection,
+header .name::selection,
+main .title::selection,
+main .button.mail + .mail-address>span::selection,
+main::selection {
 	background: rgba(255, 154, 86, 0.99);
 	color: white;
 }
@@ -188,10 +197,6 @@ main .button.mail + .mail-address:after {
 	bottom: -0.4em;
 	left: 50%;
 	transform: translateX(-50%);
-}
-main .button.mail + .mail-address>span::selection {
-	background: rgba(255, 154, 86, 0.99);
-	color: white;
 }
 
 @media only screen and (max-width: 975px) {
