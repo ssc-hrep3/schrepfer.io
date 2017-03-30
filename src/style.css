@@ -119,7 +119,7 @@ main .title {
 	white-space: nowrap;
 }
 main .button.linkedin {
-	display: inline-block;
+	display: inline-block !important;
 	font-size: 32px;
 	cursor: pointer;
 	margin-top: 70px;
