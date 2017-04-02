@@ -127,7 +127,8 @@ main .title {
 	font-weight: 300;
 	white-space: nowrap;
 }
-main .button.linkedin {
+main .button.linkedin,
+main .button.stackoverflow {
 	display: inline-block !important;
 	font-size: 32px;
 	cursor: pointer;
@@ -135,6 +136,9 @@ main .button.linkedin {
 	white-space: nowrap;
 	position: relative;
 	outline: none;
+}
+main .button.stackoverflow {
+	margin-left: 50px;
 }
 main .button.mail {
 	display: inline-block;
