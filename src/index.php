@@ -1,4 +1,10 @@
-﻿<!doctype html>
+﻿<?php
+	header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+	header("Cache-Control: post-check=0, pre-check=0");
+	header("Pragma: no-cache");
+	header("Expires: Sat, 01 Jan 2000 05:00:00 GMT");
+?>
+<!doctype html>
 <html>
 <head>
 <title>Sebastian Schrepfer</title>
